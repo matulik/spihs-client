@@ -8,6 +8,7 @@
 
 import Foundation
 import Alamofire
+import SwiftyJSON
 
 let host = "http://127.0.0.1:8000/"
 let fjson = "?format=json"
