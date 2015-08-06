@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5E0FB7971B734BF5000CD035 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0FB7961B734BF5000CD035 /* LoginViewController.swift */; };
+		5E0FB7991B734F4C000CD035 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0FB7981B734F4C000CD035 /* Login.swift */; };
 		5E65915D1B73463E006142B6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E65915C1B73463E006142B6 /* AppDelegate.swift */; };
 		5E6591621B73463E006142B6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E6591601B73463E006142B6 /* Main.storyboard */; };
 		5E6591641B73463E006142B6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E6591631B73463E006142B6 /* Images.xcassets */; };
@@ -30,6 +31,7 @@
 		35FE8E7286693479152AACA8 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		4D66C3C955314AB395F606AE /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E0FB7961B734BF5000CD035 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = Controller/LoginViewController.swift; sourceTree = "<group>"; };
+		5E0FB7981B734F4C000CD035 /* Login.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		5E6591571B73463E006142B6 /* spihs-client.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "spihs-client.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E65915B1B73463E006142B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5E65915C1B73463E006142B6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -73,6 +75,7 @@
 		5E0FB7911B734B3C000CD035 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				5E0FB7981B734F4C000CD035 /* Login.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -311,6 +314,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E0FB7991B734F4C000CD035 /* Login.swift in Sources */,
 				5E0FB7971B734BF5000CD035 /* LoginViewController.swift in Sources */,
 				5E65915D1B73463E006142B6 /* AppDelegate.swift in Sources */,
 			);
