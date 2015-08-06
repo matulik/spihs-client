@@ -36,8 +36,9 @@ class Login {
         self.sendRequest("POST", subpage: "login/", returnType: "JSON", params: parameters, callbackID: 1, loging: true)
     }
     
+    // ID = 1
     func loginCallback(data: AnyObject) {
-        
+        println("callback!")
     }
     
     // ID = 2
@@ -83,10 +84,10 @@ class Login {
             Alamofire.request(httpMethod!, host+subpage, parameters: params)
                 .response { request, response, data ,error in
                     if loging == true {
-                        println("######Request: \(method) on \(subpage)######\n\(request)\n######EndOfRequest")
-                        println("######Response:\n\(response)\n######EndOfResponse")
-                        println("######Data:\n\(data)\n######EndOfData")
-                        println("######Error:\n\(error)\n######EndOfError######")
+                        println("➡️######Request: \(method) on \(subpage)######\n\(request)\n######EndRequest######")
+                        println("⬅️######Response######\n\(response)\n######EndResponse####")
+                        println("🔤######Data######\n\(data)\n######EndData####")
+                        println("⛔️######Error\n\(error)\n######EndError####")
                     }
                     self.callback(callbackID, data: data!)
             }
@@ -95,10 +96,10 @@ class Login {
             Alamofire.request(httpMethod!, host+subpage+fjson, parameters: params)
                 .responseJSON { request, response, JSON, error in
                     if loging == true {
-                        println("######Request: \(method) on \(subpage)######\n\(request)\n######EndOfRequest")
-                        println("######Response:\n\(response)\n######EndOfResponse\n")
-                        println("######JSON:\n\(JSON)\n######EndOfJSON\n")
-                        println("######Error:\n\(error)\n######EndOfError\n")
+                        println("➡️######Request: \(method) on \(subpage)######\n\(request)\n######EndRequest######")
+                        println("⬅️######Response######\n\(response)\n######EndResponse####\n")
+                        println("🔤######JSON######\n\(JSON)\n######EndOfJSON####")
+                        println("⛔️######Error######\n\(error)\n######EndOfError####")
                     }
                     self.callback(callbackID, data: JSON!)
             }
