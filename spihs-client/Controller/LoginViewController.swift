@@ -12,10 +12,14 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var loginTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var loadingActivityIndicator: UIActivityIndicatorView!
     
     var login : Login = Login()
     
     override func viewDidLoad() {
+        self.loadingActivityIndicator.hidden = true
+        // Notificaton center
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:"loadingDataNotification:", name: "loadingData", object: nil)
         super.viewDidLoad()
     }
     
@@ -31,5 +35,19 @@ class LoginViewController: UIViewController {
     
     @IBAction func logoutBarButton(sender: AnyObject) {
         self.login.logout()
+    }
+    
+    func loadingDataNotification(notification: NSNotification) {
+        let active = notification.userInfo!["Bool"] as! Bool
+        if active == true {
+            self.loadingActivityIndicator.hidden = false
+            self.loadingActivityIndicator.startAnimating()
+            self.view.userInteractionEnabled = false
+        }
+        else {
+            self.loadingActivityIndicator.hidden = true
+            self.loadingActivityIndicator.stopAnimating()
+            self.view.userInteractionEnabled = true
+        }
     }
 }

@@ -21,29 +21,44 @@ class Login {
     var email : String = ""
     var status : Int = 0
     var token : String = ""
+    var notificationDictonary = ["Bool": false]
     
     init() {
         //        TODO INITIALIZATION
     }
-    
-    
     // ID = 1
     func login() {
         let parameters = [
             "username": self.username,
             "password": self.password
         ]
+        // Send notification to ViewController
+        self.notificationDictonary["Bool"] = true
+        NSNotificationCenter.defaultCenter().postNotificationName("loadingData", object: nil, userInfo: self.notificationDictonary)
         self.sendRequest("POST", subpage: "login/", returnType: "JSON", params: parameters, callbackID: 1, loging: true)
     }
     
     // ID = 1
-    func loginCallback(data: AnyObject) {
-        println("callback!")
+    func loginCallback(status: Int, data: AnyObject) {
+        if status != 200 {
+            println("Bad status code")
+            return
+        }
+        // Send notification to ViewController
+        self.notificationDictonary["Bool"] = false
+        NSNotificationCenter.defaultCenter().postNotificationName("loadingData", object: nil, userInfo: self.notificationDictonary)
+        
+        if let t = JSON(data)["token"].string {
+            self.token = t
+        }
+        else {
+            println("Response doesnt return token")
+        }
     }
     
     // ID = 2
     func logout() {
-        self.sendRequest("GET", subpage: "logout/", returnType: "DEFAULT", params: ["":""], callbackID: 2, loging: false)
+        self.sendRequest("GET", subpage: "logout/", returnType: "DEFAULT", params: ["":""], callbackID: 2, loging: true)
     }
     
     // parametrers:
@@ -83,25 +98,52 @@ class Login {
         case "DEFAULT":
             Alamofire.request(httpMethod!, host+subpage, parameters: params)
                 .response { request, response, data ,error in
+                    var statusCode : Int = 0
                     if loging == true {
-                        println("➡️######Request: \(method) on \(subpage)######\n\(request)\n######EndRequest######")
-                        println("⬅️######Response######\n\(response)\n######EndResponse####")
-                        println("🔤######Data######\n\(data)\n######EndData####")
-                        println("⛔️######Error\n\(error)\n######EndError####")
+                        println("### SENDING ###")
+                        println("➡️Request: \(method) on \(subpage) with \(params)\n")
+                        if let resp = response {
+                            statusCode = resp.statusCode
+                            println("⬅️statusCode: \(statusCode)")
+                            println("🔤Response: \(data)")
+                        }
+                        else {
+                            statusCode = 0
+                            println("⛔️\(error)")
+                        }
                     }
-                    self.callback(callbackID, data: data!)
+                    if let ldata: AnyObject = data {
+                        self.callback(callbackID, status: statusCode, data: ldata)
+                    }
+                    else {
+                        self.callback(callbackID, status: statusCode, data: 0)
+                    }
             }
             
         case "JSON":
             Alamofire.request(httpMethod!, host+subpage+fjson, parameters: params)
                 .responseJSON { request, response, JSON, error in
+                    var statusCode : Int = 0
                     if loging == true {
-                        println("➡️######Request: \(method) on \(subpage)######\n\(request)\n######EndRequest######")
-                        println("⬅️######Response######\n\(response)\n######EndResponse####\n")
-                        println("🔤######JSON######\n\(JSON)\n######EndOfJSON####")
-                        println("⛔️######Error######\n\(error)\n######EndOfError####")
+                        println("### SENDING ###")
+                        println("➡️Request: \(method) on \(subpage) with \(params)")
+                        if let resp = response {
+                            statusCode = resp.statusCode
+                            println("⬅️statusCode: \(statusCode)")
+                            println("🔤Response: \(JSON)")
+                        }
+                        else {
+                            statusCode = 0
+                            println("⛔️\(error)")
+                        }
                     }
-                    self.callback(callbackID, data: JSON!)
+                    if let json: AnyObject = JSON {
+                        self.callback(callbackID, status: statusCode, data: json)
+                    }
+                    else {
+                        self.callback(callbackID, status: statusCode, data: 0)
+                    }
+                    
             }
             
         default:
@@ -109,9 +151,9 @@ class Login {
         }
     }
     
-    func callback(id: Int, data: AnyObject) {
+    func callback(id: Int, status: Int, data: AnyObject) {
         if id == 1 {
-            self.loginCallback(data)
+            self.loginCallback(status, data: data)
         }
     }
 }
