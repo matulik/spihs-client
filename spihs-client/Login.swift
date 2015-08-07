@@ -28,6 +28,7 @@ class Login : Request {
         // TODO INITIALIZATION
     }
     
+    // Callback methods
     override func callback(id: Int, status: Int, data: AnyObject) {
         if id == 1 {
             self.loginCallback(status, data: data)
@@ -66,7 +67,7 @@ class Login : Request {
     
     // ID = 2
     func logout() {
-        self.sendRequest("GET", subpage: "logout/", returnType: "DEFAULT", params: ["":""], callbackID: 2, loging: true)
+        self.sendRequest("GET", subpage: "logout/", returnType: "JSON", params: ["":""], callbackID: 2, loging: true)
     }
 }
 
