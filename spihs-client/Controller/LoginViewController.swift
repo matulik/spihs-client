@@ -38,7 +38,7 @@ class LoginViewController: UIViewController {
     }
     
     func loadingDataNotification(notification: NSNotification) {
-        let active = notification.userInfo!["Bool"] as! Bool
+        /*let active = notification.userInfo!["Bool"] as! Bool
         if active == true {
             self.loadingActivityIndicator.hidden = false
             self.loadingActivityIndicator.startAnimating()
@@ -48,6 +48,9 @@ class LoginViewController: UIViewController {
             self.loadingActivityIndicator.hidden = true
             self.loadingActivityIndicator.stopAnimating()
             self.view.userInteractionEnabled = true
-        }
+        }*/
+        var loadingView = LoadingView()
+        
+        self.view.addSubview(loadingView)
     }
 }
