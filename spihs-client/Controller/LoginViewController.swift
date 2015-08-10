@@ -50,7 +50,6 @@ class LoginViewController: UIViewController {
             self.view.userInteractionEnabled = true
         }*/
         var loadingView = LoadingView()
-        
         self.view.addSubview(loadingView)
     }
 }

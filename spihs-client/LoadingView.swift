@@ -12,17 +12,12 @@ class LoadingView: UIView {
     
     @IBOutlet var view: UIView!
     
-    //    required init(coder aDecoder: NSCoder) {
-    //        super.init(coder: aDecoder)
-    //        NSBundle.mainBundle().loadNibNamed("Loading", owner: self, options: nil)
-    //        self.addSubview(self.view)
-    //    }
     override init (frame : CGRect) {
         super.init(frame : frame)
         self.addBehaviour()
     }
     
-    convenience init () {
+    convenience init() {
         self.init(frame:CGRectZero)
     }
     
@@ -30,7 +25,7 @@ class LoadingView: UIView {
         fatalError("This class does not support NSCoding")
     }
     
-    func addBehaviour (){
+    func addBehaviour(){
         NSBundle.mainBundle().loadNibNamed("Loading", owner: self, options: nil)
         self.addSubview(self.view)
     }
