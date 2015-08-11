@@ -35,7 +35,7 @@ class Login : Request {
         }
     }
     
-    // ID = 1
+    // ID = 1, REQUEST
     func login() {
         let parameters = [
             "username": self.username,
@@ -47,7 +47,7 @@ class Login : Request {
         self.sendRequest("POST", subpage: "login/", returnType: "JSON", params: parameters, callbackID: 1, loging: true)
     }
     
-    // ID = 1
+    // ID = 1, REPSONSE
     func loginCallback(status: Int, data: AnyObject) {
         if status != 200 {
             println("Bad status code")
@@ -65,7 +65,7 @@ class Login : Request {
         }
     }
     
-    // ID = 2
+    // ID = 2, REQUEST
     func logout() {
         self.sendRequest("GET", subpage: "logout/", returnType: "JSON", params: ["":""], callbackID: 2, loging: true)
     }

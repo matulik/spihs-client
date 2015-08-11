@@ -12,12 +12,10 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var loginTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var loadingActivityIndicator: UIActivityIndicatorView!
     
     var login : Login = Login()
     
     override func viewDidLoad() {
-        self.loadingActivityIndicator.hidden = true
         // Notificaton center
         NSNotificationCenter.defaultCenter().addObserver(self, selector:"loadingDataNotification:", name: "loadingData", object: nil)
         super.viewDidLoad()
@@ -51,5 +49,6 @@ class LoginViewController: UIViewController {
         }*/
         var loadingView = LoadingView()
         self.view.addSubview(loadingView)
+        loadingView.addBehaviour(self.view)
     }
 }

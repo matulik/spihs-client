@@ -14,7 +14,7 @@ class LoadingView: UIView {
     
     override init (frame : CGRect) {
         super.init(frame : frame)
-        self.addBehaviour()
+//        self.addBehaviour()
     }
     
     convenience init() {
@@ -25,8 +25,9 @@ class LoadingView: UIView {
         fatalError("This class does not support NSCoding")
     }
     
-    func addBehaviour(){
+    func addBehaviour(mainView: UIView){
         NSBundle.mainBundle().loadNibNamed("Loading", owner: self, options: nil)
         self.addSubview(self.view)
+        self.center = CGPointMake(mainView.frame.width/2-100, mainView.frame.height/2-100)
     }
 }
