@@ -15,35 +15,34 @@
             <rect key="frame" x="0.0" y="0.0" width="200" height="220"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loading_spinner" translatesAutoresizingMaskIntoConstraints="NO" id="UTN-rN-zyb">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="64Q-1w-4Fx">
+                    <rect key="frame" x="62" y="199" width="77" height="21"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loading_spinner" translatesAutoresizingMaskIntoConstraints="NO" id="5Y2-iq-DWK">
                     <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="width" secondItem="UTN-rN-zyb" secondAttribute="height" multiplier="1:1" id="Eec-ik-XId"/>
+                        <constraint firstAttribute="width" secondItem="5Y2-iq-DWK" secondAttribute="height" multiplier="1:1" id="dyX-hV-CaW"/>
+                        <constraint firstAttribute="width" constant="200" id="lTL-Om-v2x"/>
                     </constraints>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LOADING" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4FO-IS-WWU">
-                    <rect key="frame" x="62" y="200" width="76" height="22"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    <color key="highlightedColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    <color key="shadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                </label>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="UTN-rN-zyb" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="CBm-K0-gbO"/>
-                <constraint firstItem="4FO-IS-WWU" firstAttribute="centerX" secondItem="UTN-rN-zyb" secondAttribute="centerX" id="UsA-l8-bCp"/>
-                <constraint firstItem="4FO-IS-WWU" firstAttribute="top" secondItem="UTN-rN-zyb" secondAttribute="bottom" id="Vb1-Kn-DRQ"/>
-                <constraint firstAttribute="centerX" secondItem="UTN-rN-zyb" secondAttribute="centerX" id="iic-Ds-roQ"/>
+                <constraint firstItem="5Y2-iq-DWK" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="33b-dd-rKf"/>
+                <constraint firstAttribute="bottom" secondItem="64Q-1w-4Fx" secondAttribute="bottom" id="SJA-1i-bG3"/>
+                <constraint firstAttribute="centerX" secondItem="5Y2-iq-DWK" secondAttribute="centerX" id="lPs-7d-URe"/>
+                <constraint firstItem="5Y2-iq-DWK" firstAttribute="centerX" secondItem="64Q-1w-4Fx" secondAttribute="centerX" constant="-0.5" id="wPg-WQ-kNv"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="656" y="360"/>
+            <point key="canvasLocation" x="1043" y="373"/>
         </view>
     </objects>
     <resources>
-        <image name="loading_spinner" width="200" height="200"/>
+        <image name="loading_spinner" width="512" height="512"/>
     </resources>
 </document>

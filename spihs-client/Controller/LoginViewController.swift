@@ -14,6 +14,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     
     var login : Login = Login()
+    var loadingView : LoadingView = LoadingView()
     
     override func viewDidLoad() {
         // Notificaton center
@@ -33,22 +34,19 @@ class LoginViewController: UIViewController {
     
     @IBAction func logoutBarButton(sender: AnyObject) {
         self.login.logout()
+        self.loadingView.stopLoading()
     }
     
     func loadingDataNotification(notification: NSNotification) {
-        /*let active = notification.userInfo!["Bool"] as! Bool
+        let active = notification.userInfo!["Bool"] as! Bool
         if active == true {
-            self.loadingActivityIndicator.hidden = false
-            self.loadingActivityIndicator.startAnimating()
+            self.loadingView.startLoading(self.view)
             self.view.userInteractionEnabled = false
         }
         else {
-            self.loadingActivityIndicator.hidden = true
-            self.loadingActivityIndicator.stopAnimating()
+            self.loadingView.stopLoading()
             self.view.userInteractionEnabled = true
-        }*/
-        var loadingView = LoadingView()
-        self.view.addSubview(loadingView)
-        loadingView.addBehaviour(self.view)
+        }
+
     }
 }

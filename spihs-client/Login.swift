@@ -51,7 +51,7 @@ class Login : Request {
     func loginCallback(status: Int, data: AnyObject) {
         if status != 200 {
             println("Bad status code")
-            return
+            // TODO
         }
         // Send notification to ViewController
         self.notificationDictonary["Bool"] = false
