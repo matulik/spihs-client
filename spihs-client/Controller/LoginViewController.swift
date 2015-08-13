@@ -47,6 +47,5 @@ class LoginViewController: UIViewController {
             self.loadingView.stopLoading()
             self.view.userInteractionEnabled = true
         }
-
     }
 }

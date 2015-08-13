@@ -11,7 +11,7 @@ import Alamofire
 import SwiftyJSON
 
 let host = "http://127.0.0.1:8000/"
-let fjson = "?format=json"
+
 // Must be implementet of all Request-base classes
 let numberOfCallbacks = 2
 

@@ -45,7 +45,7 @@ class LoadingView: UIView {
     }
     
     private func addBlurEffect(mainView: UIView) {
-        var effect = UIBlurEffect(style: UIBlurEffectStyle.Light)
+        var effect = UIBlurEffect(style: UIBlurEffectStyle.Dark)
         self.effectView = UIVisualEffectView(effect: effect)
         effectView.frame = CGRectMake(0, 0, self.frameX, self.frameY)
         self.effectView.tag = 1
