@@ -1,30 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="IFB-Z1-tRv">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="8oS-qj-hCd">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller-->
-        <scene sceneID="TQL-EG-9fB">
-            <objects>
-                <navigationController id="IFB-Z1-tRv" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="3gw-ad-eMK">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="8oS-qj-hCd" kind="relationship" relationship="rootViewController" id="awU-W0-gIH"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="q25-HK-j27" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="232" y="558"/>
-        </scene>
         <!--Login-->
         <scene sceneID="Xv5-Cr-xT3">
             <objects>
-                <viewController storyboardIdentifier="login" title="Login" useStoryboardIdentifierAsRestorationIdentifier="YES" id="8oS-qj-hCd" customClass="LoginViewController" customModule="spihs_client" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginView" title="Login" useStoryboardIdentifierAsRestorationIdentifier="YES" id="8oS-qj-hCd" customClass="LoginViewController" customModule="spihs_client" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="1wR-xL-M5b"/>
                         <viewControllerLayoutGuide type="bottom" id="5fT-0N-0TU"/>
@@ -34,17 +18,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="F0G-DO-N5Q">
-                                <rect key="frame" x="150" y="285" width="300" height="30"/>
+                                <rect key="frame" x="180" y="225" width="240" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5Ug-xZ-I3b">
-                                <rect key="frame" x="150" y="345" width="300" height="30"/>
+                                <rect key="frame" x="180" y="285" width="240" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cUQ-eb-zYj">
-                                <rect key="frame" x="277" y="405" width="47" height="30"/>
+                                <rect key="frame" x="277" y="345" width="47" height="30"/>
                                 <state key="normal" title="LOGIN">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -55,15 +39,14 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="centerX" secondItem="F0G-DO-N5Q" secondAttribute="centerX" id="8Gh-CM-7v2"/>
-                            <constraint firstItem="cUQ-eb-zYj" firstAttribute="centerX" secondItem="5Ug-xZ-I3b" secondAttribute="centerX" constant="0.5" id="Ar7-2r-w5N"/>
-                            <constraint firstAttribute="centerY" secondItem="F0G-DO-N5Q" secondAttribute="centerY" id="FXR-kO-0Qr"/>
-                            <constraint firstAttribute="width" secondItem="F0G-DO-N5Q" secondAttribute="width" multiplier="2" id="LqO-lA-f2k"/>
-                            <constraint firstItem="cUQ-eb-zYj" firstAttribute="top" secondItem="5Ug-xZ-I3b" secondAttribute="bottom" constant="30" id="X96-An-kmI"/>
-                            <constraint firstItem="F0G-DO-N5Q" firstAttribute="centerX" secondItem="5Ug-xZ-I3b" secondAttribute="centerX" id="fhJ-5D-g5U"/>
-                            <constraint firstItem="5Ug-xZ-I3b" firstAttribute="top" secondItem="F0G-DO-N5Q" secondAttribute="bottom" constant="30" id="gsV-gp-khc"/>
-                            <constraint firstItem="F0G-DO-N5Q" firstAttribute="width" secondItem="5Ug-xZ-I3b" secondAttribute="width" id="hVf-KY-lgG"/>
-                            <constraint firstAttribute="centerX" secondItem="5Ug-xZ-I3b" secondAttribute="centerX" id="l1b-uA-R9p"/>
+                            <constraint firstItem="cUQ-eb-zYj" firstAttribute="top" secondItem="5Ug-xZ-I3b" secondAttribute="bottom" constant="30" id="AsV-9F-TkU"/>
+                            <constraint firstItem="5Ug-xZ-I3b" firstAttribute="top" secondItem="F0G-DO-N5Q" secondAttribute="bottom" constant="30" id="D55-xg-ta9"/>
+                            <constraint firstItem="5Ug-xZ-I3b" firstAttribute="width" secondItem="F0G-DO-N5Q" secondAttribute="width" id="F4G-F8-vYq"/>
+                            <constraint firstItem="cUQ-eb-zYj" firstAttribute="centerX" secondItem="5Ug-xZ-I3b" secondAttribute="centerX" constant="0.5" id="Nma-jp-YT0"/>
+                            <constraint firstAttribute="centerX" secondItem="5Ug-xZ-I3b" secondAttribute="centerX" id="UWM-m0-pII"/>
+                            <constraint firstItem="5Ug-xZ-I3b" firstAttribute="width" secondItem="nvU-Mc-HDt" secondAttribute="width" multiplier="0.4" id="WbD-Ll-Teb"/>
+                            <constraint firstItem="5Ug-xZ-I3b" firstAttribute="centerX" secondItem="F0G-DO-N5Q" secondAttribute="centerX" id="boX-la-XgM"/>
+                            <constraint firstAttribute="centerY" secondItem="5Ug-xZ-I3b" secondAttribute="centerY" id="eAt-Vz-9ts"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Login" id="2ej-pa-sWa">
@@ -80,7 +63,50 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="diq-Cg-svF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1102" y="558"/>
+            <point key="canvasLocation" x="1522" y="414"/>
+        </scene>
+        <!--Test-->
+        <scene sceneID="4yN-6f-b1F">
+            <objects>
+                <viewController title="Test" id="ysf-sv-6Sg" customClass="TestViewController" customModule="spihs_client" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="9xM-kl-At5"/>
+                        <viewControllerLayoutGuide type="bottom" id="sKq-am-gLr"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="cND-r9-q9v">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Test" id="2y0-iD-Ei9">
+                        <barButtonItem key="rightBarButtonItem" title="Logout" id="QfN-4S-IWz">
+                            <connections>
+                                <action selector="logoutBarButton:" destination="ysf-sv-6Sg" id="jOx-fc-Xkm"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2yk-ev-eii" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2334" y="1174"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="lwW-jZ-fbv">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="e2b-6y-41k" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController storyboardIdentifier="AfterLoginNavigationController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="rv9-N5-TeW" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="71P-x8-XVE">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ysf-sv-6Sg" kind="relationship" relationship="rootViewController" id="yny-Ui-3by"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="1522" y="1174"/>
         </scene>
     </scenes>
 </document>
