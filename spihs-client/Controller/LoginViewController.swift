@@ -13,7 +13,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var loginTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
-    var login : Login = Login()
+    var user = Login.sharedInstance
     var loadingView : LoadingView = LoadingView()
     
     override func viewDidLoad() {
@@ -27,13 +27,13 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func loginButton(sender: AnyObject) {
-        self.login.username = self.loginTextField.text
-        self.login.password = self.passwordTextField.text
-        self.login.login()
+        self.user.username = self.loginTextField.text
+        self.user.password = self.passwordTextField.text
+        self.user.login()
     }
     
     @IBAction func logoutBarButton(sender: AnyObject) {
-        self.login.logout()
+        self.user.logout()
         self.loadingView.stopLoading()
     }
     
