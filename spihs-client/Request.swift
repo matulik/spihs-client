@@ -101,7 +101,7 @@ class Request {
         }
     }
     
-    func sendNotification(observerName: String, userInfo: [String:Bool]) {
+    func sendNotification(observerName: String, userInfo: [String:String]) {
         NSNotificationCenter.defaultCenter().postNotificationName(observerName, object: nil, userInfo: userInfo)
     }
     
