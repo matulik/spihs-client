@@ -27,7 +27,7 @@ class Login : Request {
     var email : String = ""
     var status : Int = 0
     var token : String = ""
-    var notificationDictonary = ["Bool": ""]
+    var notificationDictonary = ["Result": ""]
     
     override init() {
         // TODO INITIALIZATION
@@ -49,7 +49,7 @@ class Login : Request {
             "username": Login.sharedInstance.username,
             "password": Login.sharedInstance.username
         ]
-        Login.sharedInstance.notificationDictonary["Bool"] = "loging"
+        Login.sharedInstance.notificationDictonary["Result"] = "loging"
         self.sendNotification("loginViewControllerObserver", userInfo: Login.sharedInstance.notificationDictonary)
         self.sendRequest("POST", subpage: "login/", returnType: "JSON", params: parameters, callbackID: 1, loging: true)
     }
@@ -63,11 +63,11 @@ class Login : Request {
 
         if let t = JSON(data)["token"].string {
             Login.sharedInstance.token = t
-            Login.sharedInstance.notificationDictonary["Bool"] = "ok"
+            Login.sharedInstance.notificationDictonary["Result"] = "ok"
         }
         else {
             println("Response doesnt return token")
-            Login.sharedInstance.notificationDictonary["Bool"] = "failed"
+            Login.sharedInstance.notificationDictonary["Result"] = "failed"
         }
         self.sendNotification("loginViewControllerObserver", userInfo: Login.sharedInstance.notificationDictonary)
     }
@@ -75,17 +75,17 @@ class Login : Request {
     // ID = 2, REQUEST
     func logout() {
         self.sendRequest("GET", subpage: "logout/", returnType: "JSON", params: ["":""], callbackID: 2, loging: true)
-        Login.sharedInstance.notificationDictonary["Bool"] = "logout"
+        Login.sharedInstance.notificationDictonary["Result"] = "logout"
         self.sendNotification("loginViewControllerObserver", userInfo: Login.sharedInstance.notificationDictonary)
     }
     
     // ID = 2, RESPONSE
     func logoutCallBack(status: Int, data: AnyObject) {
         if status != 200 {
-            Login.sharedInstance.notificationDictonary["Bool"] = "failed"
+            Login.sharedInstance.notificationDictonary["Result"] = "failed"
         }
         else {
-            Login.sharedInstance.notificationDictonary["Bool"] = "ok"
+            Login.sharedInstance.notificationDictonary["Result"] = "ok"
         }
         self.sendNotification("loginViewControllerObserver", userInfo: Login.sharedInstance.notificationDictonary)
     }

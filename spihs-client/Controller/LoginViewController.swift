@@ -18,7 +18,7 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         // Notificaton center
-        NSNotificationCenter.defaultCenter().addObserver(self, selector:"loadingDataNotification:", name: "loadingData", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:"loadingDataNotification:", name: "loginViewControllerObserver", object: nil)
         super.viewDidLoad()
     }
     
@@ -38,14 +38,19 @@ class LoginViewController: UIViewController {
     }
     
     func loadingDataNotification(notification: NSNotification) {
-        let active = notification.userInfo!["Bool"] as! Bool
-        if active == true {
+        let result = notification.userInfo!["Result"] as! String
+        if result == "loging" {
             self.loadingView.startLoading(self.view)
             self.view.userInteractionEnabled = false
         }
-        else {
+        else if result == "failed" {
             self.loadingView.stopLoading()
             self.view.userInteractionEnabled = true
+        }
+        else if result == "ok" {
+            self.loadingView.stopLoading()
+            self.view.userInteractionEnabled = true
+            // TODO 
         }
     }
 }
