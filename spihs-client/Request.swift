@@ -101,6 +101,10 @@ class Request {
         }
     }
     
+    func sendNotification(observerName: String, userInfo: [String:Bool]) {
+        NSNotificationCenter.defaultCenter().postNotificationName(observerName, object: nil, userInfo: userInfo)
+    }
+    
     func callback(id: Int, status: Int, data: AnyObject) {
         fatalError("Method must be override!")
     }

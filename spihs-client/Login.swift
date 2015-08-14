@@ -48,7 +48,8 @@ class Login : Request {
         ]
         // Send notification to ViewController
         Login.sharedInstance.notificationDictonary["Bool"] = true
-        NSNotificationCenter.defaultCenter().postNotificationName("loadingData", object: nil, userInfo: Login.sharedInstance.notificationDictonary)
+        self.sendNotification("loadingData", userInfo: Login.sharedInstance.notificationDictonary)
+//        NSNotificationCenter.defaultCenter().postNotificationName("loadingData", object: nil, userInfo: Login.sharedInstance.notificationDictonary)
         self.sendRequest("POST", subpage: "login/", returnType: "JSON", params: parameters, callbackID: 1, loging: true)
     }
     
@@ -60,7 +61,8 @@ class Login : Request {
         }
         // Send notification to ViewController
         Login.sharedInstance.notificationDictonary["Bool"] = false
-        NSNotificationCenter.defaultCenter().postNotificationName("loadingData", object: nil, userInfo: Login.sharedInstance.notificationDictonary)
+        self.sendNotification("loadingData", userInfo: Login.sharedInstance.notificationDictonary)
+//        NSNotificationCenter.defaultCenter().postNotificationName("loadingData", object: nil, userInfo: Login.sharedInstance.notificationDictonary)
         
         if let t = JSON(data)["token"].string {
             Login.sharedInstance.token = t
