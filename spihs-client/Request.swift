@@ -9,6 +9,8 @@
 import Foundation
 import Alamofire
 
+let fjson = "?format=json"
+
 class Request {
     // parametrers:
     // methos: GET, POST
