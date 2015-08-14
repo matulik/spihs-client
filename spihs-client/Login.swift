@@ -16,6 +16,11 @@ let host = "http://127.0.0.1:8000/"
 let numberOfCallbacks = 2
 
 class Login : Request {
+    
+    // Singleton
+    static let sharedInstance = Login()
+    //
+    
     var id : Int = -1
     var username : String = ""
     var password : String = ""
@@ -38,12 +43,12 @@ class Login : Request {
     // ID = 1, REQUEST
     func login() {
         let parameters = [
-            "username": self.username,
-            "password": self.password
+            "username": Login.sharedInstance.username,
+            "password": Login.sharedInstance.username
         ]
         // Send notification to ViewController
-        self.notificationDictonary["Bool"] = true
-        NSNotificationCenter.defaultCenter().postNotificationName("loadingData", object: nil, userInfo: self.notificationDictonary)
+        Login.sharedInstance.notificationDictonary["Bool"] = true
+        NSNotificationCenter.defaultCenter().postNotificationName("loadingData", object: nil, userInfo: Login.sharedInstance.notificationDictonary)
         self.sendRequest("POST", subpage: "login/", returnType: "JSON", params: parameters, callbackID: 1, loging: true)
     }
     
@@ -54,11 +59,11 @@ class Login : Request {
             // TODO
         }
         // Send notification to ViewController
-        self.notificationDictonary["Bool"] = false
-        NSNotificationCenter.defaultCenter().postNotificationName("loadingData", object: nil, userInfo: self.notificationDictonary)
+        Login.sharedInstance.notificationDictonary["Bool"] = false
+        NSNotificationCenter.defaultCenter().postNotificationName("loadingData", object: nil, userInfo: Login.sharedInstance.notificationDictonary)
         
         if let t = JSON(data)["token"].string {
-            self.token = t
+            Login.sharedInstance.token = t
         }
         else {
             println("Response doesnt return token")
@@ -70,16 +75,3 @@ class Login : Request {
         self.sendRequest("GET", subpage: "logout/", returnType: "JSON", params: ["":""], callbackID: 2, loging: true)
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
