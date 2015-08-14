@@ -27,7 +27,7 @@ class Login : Request {
     var email : String = ""
     var status : Int = 0
     var token : String = ""
-    var notificationDictonary = ["Bool": false]
+    var notificationDictonary = ["Result": ""]
     
     override init() {
         // TODO INITIALIZATION
@@ -36,7 +36,10 @@ class Login : Request {
     // Callback methods
     override func callback(id: Int, status: Int, data: AnyObject) {
         if id == 1 {
-            self.loginCallback(status, data: data)
+            self.loginCallBack(status, data: data)
+        }
+        if id == 2 {
+            self.logoutCallBack(status, data: data)
         }
     }
     
@@ -46,32 +49,44 @@ class Login : Request {
             "username": Login.sharedInstance.username,
             "password": Login.sharedInstance.username
         ]
-        // Send notification to ViewController
-        Login.sharedInstance.notificationDictonary["Bool"] = true
-        NSNotificationCenter.defaultCenter().postNotificationName("loadingData", object: nil, userInfo: Login.sharedInstance.notificationDictonary)
+        Login.sharedInstance.notificationDictonary["Result"] = "loging"
+        self.sendNotification("loginViewControllerObserver", userInfo: Login.sharedInstance.notificationDictonary)
         self.sendRequest("POST", subpage: "login/", returnType: "JSON", params: parameters, callbackID: 1, loging: true)
     }
     
     // ID = 1, REPSONSE
-    func loginCallback(status: Int, data: AnyObject) {
+    func loginCallBack(status: Int, data: AnyObject) {
         if status != 200 {
             println("Bad status code")
             // TODO
         }
-        // Send notification to ViewController
-        Login.sharedInstance.notificationDictonary["Bool"] = false
-        NSNotificationCenter.defaultCenter().postNotificationName("loadingData", object: nil, userInfo: Login.sharedInstance.notificationDictonary)
-        
+
         if let t = JSON(data)["token"].string {
             Login.sharedInstance.token = t
+            Login.sharedInstance.notificationDictonary["Result"] = "ok"
         }
         else {
             println("Response doesnt return token")
+            Login.sharedInstance.notificationDictonary["Result"] = "failed"
         }
+        self.sendNotification("loginViewControllerObserver", userInfo: Login.sharedInstance.notificationDictonary)
     }
     
     // ID = 2, REQUEST
     func logout() {
         self.sendRequest("GET", subpage: "logout/", returnType: "JSON", params: ["":""], callbackID: 2, loging: true)
+        Login.sharedInstance.notificationDictonary["Result"] = "logout"
+        self.sendNotification("loginViewControllerObserver", userInfo: Login.sharedInstance.notificationDictonary)
+    }
+    
+    // ID = 2, RESPONSE
+    func logoutCallBack(status: Int, data: AnyObject) {
+        if status != 200 {
+            Login.sharedInstance.notificationDictonary["Result"] = "failed"
+        }
+        else {
+            Login.sharedInstance.notificationDictonary["Result"] = "ok"
+        }
+        self.sendNotification("loginViewControllerObserver", userInfo: Login.sharedInstance.notificationDictonary)
     }
 }
